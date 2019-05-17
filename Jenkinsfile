@@ -3,8 +3,8 @@ pipeline{
 	stages{
 		stage('CompileandExecute'){
 		steps{
-			javac LinkedList.java
-			java LinkedList
+			sh "javac LinkedList.java"
+			sh "java LinkedList"
 		}
 	}
 	}
