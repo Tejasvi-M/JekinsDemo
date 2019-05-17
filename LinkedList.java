@@ -27,6 +27,21 @@ class LinkedList
 	private static Node head;
 	private static int numNodes;
 	
+	public static void main(String [] args)
+	{
+		System.out.println("/=/=/=/= TESTING /=/=/=/=");
+		LinkedList ll = new LinkedList(10);
+		ll.addAtHead(11);
+		ll.addAtHead(12);
+		ll.addAtHead(13);
+		ll.addAtTail(8);
+		ll.addAtTail(7);
+		ll.addAtIndex(4,9);
+		ll.addAtIndex(4,9);
+		ll.deleteAtIndex(4);
+		ll.printList();
+	}
+	
 	public LinkedList(Object dat)
 	{
 		head = new Node(dat);
@@ -66,20 +81,6 @@ class LinkedList
 		numNodes++;
 	}
 	
-	public void addAtIndex(int index, Node node)
-	{
-		Node temp = head;
-		Node holder;
-		for(int i=0; i < index-1 && temp.next != null; i++)
-		{
-			temp = temp.next;
-		}
-		holder = temp.next;
-		temp.next = node;
-		temp.next.next = holder;
-		numNodes++;
-	}
-	
 	public void deleteAtIndex(int index)
 	{
 		Node temp = head;
@@ -90,29 +91,6 @@ class LinkedList
 		temp.next = temp.next.next;
 		numNodes--;
 	}
-	
-	public void switchWithNext(int index)
-	{
-		if(index != 0)
-		{
-			Node bOne = find(index - 1);
-			Node one = find(index);
-			Node two = one.next;
-			
-			one.next = two.next;
-			bOne.next = two;
-			two.next = one;
-		}
-		else
-		{
-			Node one = find(index);
-			Node two = one.next;
-			
-			head = two;
-			one.next = two.next;
-			two.next = one;
-		}
-	}	
 	
 	public static int find(Node n)
 	{
@@ -141,10 +119,9 @@ class LinkedList
 		Node temp = head;
 		while(temp != null)
 		{
-			System.out.print(temp.data + ",");
+			System.out.println(temp.data);
 			temp = temp.next;
 		}
-		System.out.print("\n");
 	}
 	
 	public static int getSize()
